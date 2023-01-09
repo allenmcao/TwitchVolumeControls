@@ -1,0 +1,20 @@
+{
+    "name": "Twitch Volume Controls",
+    "version": "0.1",
+    "description": "Additional volume controls for Twitch. Retain volume levels on each channel, switch between volume profiles, and schedule volume changes!",
+    "permissions": ["tabs", "storage", "declarativeContent"],
+    "action": {
+      "default_popup": "popup/popup.html"
+    },
+    "manifest_version": 3,
+
+    "content_scripts": [
+      {
+        "js": ["scripts/content.js"],
+        "matches": [
+          "https://www.twitch.tv/*",
+          "https://player.twitch.tv/*"
+        ]
+      }
+    ]
+}
