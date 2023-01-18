@@ -12,12 +12,12 @@
     },
     "manifest_version": 3,
     "content_scripts": [{
-        "js": ["content.js"],
+        "js": ["scripts/content-script.js"],
         "matches": ["*://*.twitch.tv/*"],
         "run_at": "document_idle"
     }],
     "web_accessible_resources": [{
-        "resources": [ "changeVolume.js"],
+        "resources": [ "injected/*"],
         "matches": ["*://*.twitch.tv/*"]
     }]
 }

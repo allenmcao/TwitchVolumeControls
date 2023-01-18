@@ -27,19 +27,18 @@
 //   window.twitchVolumeGainNode.gain.value = volume
 // }
 
-const vol = 0;
+const vol = 1;
 
 var changeVolume = document.createElement('script');
-changeVolume.src = chrome.runtime.getURL('changeVolume.js');
+changeVolume.src = chrome.runtime.getURL('injected/changeVolume.js');
 changeVolume.onload = function() {
     this.remove();
-}; 
-(document.head || document.documentElement).appendChild(changeVolume);
-
-setTimeout(()=>{
+    
     window.postMessage({ command: "tvc_set_volume", data: vol }, "*"); 
     console.log("sent set volume msg");
 
     window.postMessage({ command: "tvc_get_volume"}, "*"); 
     console.log("sent get volume msg");
-}, 10000)
+}; 
+(document.head || document.documentElement).appendChild(changeVolume);
+
