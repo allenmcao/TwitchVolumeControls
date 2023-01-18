@@ -1,0 +1,22 @@
+body {
+    width: auto;
+    background-color: black;
+    color: #efeff1;
+    margin-bottom: 0;
+}
+
+.main {
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-size: 2em;
+    width: max-content;
+}
+
+.toggle {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+}
