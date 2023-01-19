@@ -45,7 +45,10 @@ window.addEventListener("message", (message) => {
         chrome.storage.sync.get({'channelVolumes': {}}).then((result) => {
             const channelName = message.data.data
             const vol = parseFloat(result.channelVolumes[channelName]);
-			window.postMessage({ command: "tvc_set_volume", data:vol}, "*");
+
+            if (channelName && vol) {
+                window.postMessage({ command: "tvc_set_volume", data:vol}, "*");
+            }
 		});
     }
 });
