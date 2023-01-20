@@ -53,11 +53,15 @@ window.addEventListener("message", (message) => {
     }
 });
 
-const video = document.querySelector('video')
-video.addEventListener('loadedmetadata', () => {
-    window.postMessage({ command: "tvc_channel_load"}, "*");
-})
 
+const video = document.querySelector('video')
+if (video) {
+    video.addEventListener('loadedmetadata', () => {
+        window.postMessage({ command: "tvc_channel_load"}, "*");
+    })
+} else {
+    console.log("Video not found, not adding channel load listener.");
+}
 
 
 let changeVolume = document.createElement('script');
