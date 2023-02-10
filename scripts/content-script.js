@@ -35,7 +35,9 @@ window.addEventListener("message", (message) => {
             // event.stopPropagation();
 
             const channelName = message.data.data;
-            const vol = event?.target?.value
+            const vol = event?.target?.value;
+
+            // console.log('changed volume on channel ' + channelName + ' to: ' + vol);
             chrome.storage.sync.get({'channelVolumes': {}}).then((result) => {
                 result.channelVolumes[channelName] = vol;
                 chrome.storage.sync.set(result);
@@ -45,6 +47,8 @@ window.addEventListener("message", (message) => {
         chrome.storage.sync.get({'channelVolumes': {}}).then((result) => {
             const channelName = message.data.data
             const vol = parseFloat(result.channelVolumes[channelName]);
+
+            // console.log('found volume on channel ' + channelName + ' as: ' + vol);
 
             if (channelName && vol) {
                 window.postMessage({ command: "tvc_set_volume", data:vol}, "*");
